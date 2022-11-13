@@ -1,21 +1,25 @@
 import React from "react";
+import { connect } from "react-redux";
+import { increment, decrement } from "../../redux/counter/action";
 
-const Counter = () => {
+const Counter = ({ value, increment, decrement }) => {
   return (
-    <div class="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
-      <div class="text-2xl font-semibold" id="counter">
-        0
+    <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
+      <div className="text-2xl font-semibold" id="counter">
+        {value}
       </div>
-      <div class="flex space-x-3">
+      <div className="flex space-x-3">
         <button
-          class="bg-indigo-400 text-white px-3 py-2 rounded shadow"
+          className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
           id="increment"
+          onClick={increment}
         >
           Increment
         </button>
         <button
-          class="bg-red-400 text-white px-3 py-2 rounded shadow"
+          className="bg-red-400 text-white px-3 py-2 rounded shadow"
           id="decrement"
+          onClick={decrement}
         >
           Decrement
         </button>
@@ -23,5 +27,16 @@ const Counter = () => {
     </div>
   );
 };
+const mapStateToProps = (state, ownProp) => {
+  return {
+    value: state.value + parseInt(ownProp.id),
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: (value) => dispatch(increment(value)),
+    decrement: (value) => dispatch(decrement(value)),
+  };
+};
 
-export default Counter;
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
