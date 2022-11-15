@@ -14,7 +14,7 @@ function App() {
 
 
         <div className="max-w-md mx-auto mt-10 space-y-5">
-          <HookCounter id="10" />
+          <HookCounter  />
 
         </div>
       </div>
