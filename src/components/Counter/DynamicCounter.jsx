@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../../redux/counter/action";
 
-const HookCounter = () => {
+const DynamicCounter = () => {
   const count = useSelector((state) => state.value);
   const dispatch = useDispatch();
 
@@ -21,14 +21,14 @@ const HookCounter = () => {
         <button
           className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
           id="increment"
-          onClick={() => incrementBtn(1)}
+          onClick={() => incrementBtn(10)}
         >
           Increment
         </button>
         <button
           className="bg-red-400 text-white px-3 py-2 rounded shadow"
           id="decrement"
-          onClick={() => decrementBtn(2)}
+          onClick={() => decrementBtn(5)}
         >
           Decrement
         </button>
@@ -37,4 +37,4 @@ const HookCounter = () => {
   );
 };
 
-export default HookCounter;
+export default DynamicCounter;
