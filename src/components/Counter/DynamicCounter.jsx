@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../redux/counter/action";
+import { d_increment, d_decrement } from "../../redux/dynamicCounter/action";
 
 const DynamicCounter = () => {
-  const count = useSelector((state) => state.value);
+  const count = useSelector((state) => state.dynamicCounter.value);
   const dispatch = useDispatch();
 
   const incrementBtn = (value) => {
-    dispatch(increment(value));
+    dispatch(d_increment(value));
   };
   const decrementBtn = (value) => {
-    dispatch(decrement(value));
+    dispatch(d_decrement(value));
   };
   return (
     <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
